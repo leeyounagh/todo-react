@@ -1,38 +1,70 @@
-.App {
+.top{
+  border: 1px solid black;
+  width: 100%;
+  height: 300px;
   text-align: center;
+  color: white;
+  font-size: 150px;
+  background-color: black;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.nav-style{
+  border: 1px solid black;
+  background-color: azure;
+  display:flex;
+  justify-content:  space-around;
+  
+  
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.nav-style:hover{
+  
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.LInk-style{
+  
+  text-decoration: none;
+  color: black;
+  font-size: 30px;
+ 
+}
+.main-style{
+  border: 1px solid black;
+  height: 1000px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url('https://media.istockphoto.com/vectors/blackboard-background-chalk-blackboard-eraser-dirty-chalkboard-vector-vector-id689802202?k=20&m=689802202&s=170667a&w=0&h=N4WD4UjiI0jhM-oZ-wo_2eNI6BFd9gsxkviSVAK5LBw=' 
+  );
+}
+.page-style{
+  border: 1px solid black;
+  height: 50px;
+  background-color: black;
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.input-style{
+  background-color: black;
+  color: white;
+  
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.text-input{
+  width: 60%;
+}
+.button-style{
+  width: 10%;
+  margin: 0px;
+  padding: 0px;
+}
+body{
+  background-color: black;
+  color: white;
+}
+.button-margin{
+  margin-left: 10px;
+  margin-bottom: 10px;
+ 
+}
+.trash-can{
+  color: white;
+}
+.button-color{
+  background-color: white;
+  color:black
 }
