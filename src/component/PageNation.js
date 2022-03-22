@@ -5,7 +5,7 @@ export default class PageNation extends Component {
       return (
         
         <footer className="page-style">
-        페이지네이션
+       
       </footer>
       )
     }

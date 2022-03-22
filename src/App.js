@@ -8,13 +8,13 @@ import PageNation from './component/PageNation'
 import Control from './component/control'
 import { FcFullTrash } from 'react-icons/fc';
  import UserInput from './component/userInput'
-//  import ToDoList from './component/ToDoList';
+
 
 
 
 export default class App extends Component {
  
-  
+
   constructor(props){
     
     super(props);
@@ -22,13 +22,13 @@ export default class App extends Component {
     this.state= {
    
     toDoItems:[
-      { action:'buy Milk', done:false ,id:1},
-      {action: '치과가기', done:false, id:2},
-      {action: '아르세우스하기', done:false,id:3},
+      { action:'buy Milk', done:false ,id:this.randomIDGenerator()},
+      {action: '치과가기', done:false, id:this.randomIDGenerator()},
+      {action: '아르세우스하기', done:false,id:this.randomIDGenerator()},
       
      ],
      newToDo:'',
-     doingState:[]
+   
   }
   }
   // navState =()=>{
@@ -43,34 +43,80 @@ export default class App extends Component {
  )             
             }
           )
+
+  // handleRemove =(index) =>{
+
+  // }
+  deleteItem = (index,_id)=>{
+      if(index ==='delete'){
+        if(window.confirm('Really?')){
+          let Item = Array.from(this.state.toDoItems)
+          console.log("복제id",Item[0].id)
+          let i =0;
+          while(i<Item.length){
+            if(Item[i].id===_id){
+              Item.splice(i,1);
+            
+              console.log("길이",this.state.toDoItems)
+             break;
+            }
+            i=i+1
+          }
+         this.setState(
+           {
+             toDoItems:Item
+           }
+         )
+         
+        }
+        
+      }
+      
+     
+  }
          
   todoRow = () =>
+       
         this.state.toDoItems.map((item)=>
+       
           <tr key ={item.action}>
                  <td>{item.action}</td>
                <td> <input
                 type="checkbox"
                 checked={item.done}
                  onChange={()=>
+                 
                   this.toggleDone(item)}>
                 </input> </td>
-                <td><FcFullTrash onClick={function(e){
-                  let copiedTodo =Array.from(this.state.toDoItems)
-                }.bind(this)}></FcFullTrash></td>
+                <td><input type="button" value="delete" name={item.id}
+                   onClick={function(e){
+                    e.preventDefault();
+                  this.deleteItem('delete',e.target.name)
+                 console.log("값",e.target.name)
+                 
+                }.bind(this)
+                  }></input></td> 
                 
           </tr>
           
         
         )
+              
        
-      
+ randomIDGenerator() {
+  // Math.random should be unique because of its seeding algorithm.
+  // Convert it to base 36 (numbers + letters), and grab the first 9 characters
+  // after the decimal.
+  return "_" + Math.random().toString(36).substr(2, 9);
+}
+  
  
    render(){
-    
+    console.log("아이디값",this.state.toDoItems)
     
     return(
       <div className="App container">
-
+     
       <Top></Top>
       오늘의 할일은?
       <UserInput  NewToDo={function(){
@@ -78,20 +124,23 @@ export default class App extends Component {
           {
            toDoItems:[
              ...this.state.toDoItems,
-             {action:this.state.newToDo,done:false}
+             {action:this.state.newToDo,done:false, id:this.randomIDGenerator()},
+            
            ]
            
           }
      
        )
-       
-      }.bind(this)} updateValue={function(e){
+       console.log("아이디값",this.state.toDoItems.id)
+      }.bind(this)}  updateValue={function(e){
         this.setState(
           {
               newToDo:e.target.value
           }
       )
+     
       }.bind(this)}></UserInput>
+      
    
       <div  className="nav-style col-12"> 
       
